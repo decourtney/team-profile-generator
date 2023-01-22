@@ -1,8 +1,54 @@
 const Interrogator = require('./lib/interrogator');
+const GenerateHTML = require('./lib/generatehtml');
+const fs = require('fs/promises');
+const chalk = require('chalk');
+
+const Manager = require('./lib/manager'); // This is just for building and testing purpose. Remove for final
 
 const interrogator = new Interrogator();
-const title = 
-` ________  ________   ______   __       __        _______   __    __  ______  __        _______   ________  _______  
+const freq = 200;
+let delay = 3000;
+let counter = 0;
+
+async function init()
+{
+    const generatehtml = new GenerateHTML();
+    // displayTitle('main');
+    // console.log('\t\t\t\tWELCOME TO THE TEAM BUILDER!');
+    // console.log(`\n\t\tThe Team Builder will first ask you a series of questions to 
+    //             gather information about your team. Then it will build and 
+    //             present your team via your browser. Let's get started!`);
+
+    // await keyPress()
+
+    // // Load interrogator menu and wait for its return
+    // const team = await interrogator.loadMenu(displayTitle);
+    // // console.log(team);
+
+    // Display Please Wait while building html file
+    // waitInterval = setInterval(waitTime, freq);
+    // setTimeout(() => clearInterval(waitInterval), delay);
+
+    let htmlData = generatehtml.buildHTML((new Manager(12, 'Donovan Courtney', 'donovan.courtney@gmail.com', '555-555-5555')));
+
+    writeToFile('./index.html', htmlData);
+}
+
+function writeToFile(fileName, data)
+{
+    return new Promise((resolve, reject) =>
+    {
+        fs.writeFile(fileName, data, function(err) {
+            if (err) reject(err);
+            else resolve(data);
+        });
+    })
+}
+
+function displayTitle(val)
+{
+    const mainTitle =
+        ` ________  ________   ______   __       __        _______   __    __  ______  __        _______   ________  _______  
 |        \\|        \\ /      \\ |  \\     /  \\      |       \\ |  \\  |  \\|      \\|  \\      |       \\ |        \\|       \\ 
  \\$$$$$$$$| $$$$$$$$|  $$$$$$\\| $$\\   /  $$      | $$$$$$$\\| $$  | $$ \\$$$$$$| $$      | $$$$$$$\\| $$$$$$$$| $$$$$$$\\
    | $$   | $$__    | $$__| $$| $$$\\ /  $$$      | $$__/ $$| $$  | $$  | $$  | $$      | $$  | $$| $$__    | $$__| $$
@@ -10,59 +56,53 @@ const title =
    | $$   | $$$$$   | $$$$$$$$| $$\\$$ $$ $$      | $$$$$$$\\| $$  | $$  | $$  | $$      | $$  | $$| $$$$$   | $$$$$$$\\
    | $$   | $$_____ | $$  | $$| $$ \\$$$| $$      | $$__/ $$| $$__/ $$ _| $$_ | $$_____ | $$__/ $$| $$_____ | $$  | $$
    | $$   | $$     \\| $$  | $$| $$  \\$ | $$      | $$    $$ \\$$    $$|   $$ \\| $$     \\| $$    $$| $$     \\| $$  | $$
-    \\$$    \\$$$$$$$$ \\$$   \\$$ \\$$      \\$$       \\$$$$$$$   \\$$$$$$  \\$$$$$$ \\$$$$$$$$ \\$$$$$$$  \\$$$$$$$$ \\$$   \\$$`
-const pleaseWaitMsg = 
-`
-`
+    \\$$    \\$$$$$$$$ \\$$   \\$$ \\$$      \\$$       \\$$$$$$$   \\$$$$$$  \\$$$$$$ \\$$$$$$$$ \\$$$$$$$  \\$$$$$$$$ \\$$   \\$$`;
+    const pleaseWaitTitle =
+        ` _______   __        ________   ______    ______   ________        __       __   ______   ______  ________ 
+|       \\ |  \\      |        \\ /      \\  /      \\ |        \\      |  \\  _  |  \\ /      \\ |      \\|        \\
+| $$$$$$$\\| $$      | $$$$$$$$|  $$$$$$\\|  $$$$$$\\| $$$$$$$$      | $$ / \\ | $$|  $$$$$$\\ \\$$$$$$ \\$$$$$$$$
+| $$__/ $$| $$      | $$__    | $$__| $$| $$___\\$$| $$__          | $$/  $\\| $$| $$__| $$  | $$     | $$   
+| $$    $$| $$      | $$  \\   | $$    $$ \\$$    \\ | $$  \\         | $$  $$$\\ $$| $$    $$  | $$     | $$   
+| $$$$$$$ | $$      | $$$$$   | $$$$$$$$ _\\$$$$$$\\| $$$$$         | $$ $$\\$$\\$$| $$$$$$$$  | $$     | $$   
+| $$      | $$_____ | $$_____ | $$  | $$|  \\__| $$| $$_____       | $$$$  \\$$$$| $$  | $$ _| $$_    | $$   
+| $$      | $$     \\| $$     \\| $$  | $$ \\$$    $$| $$     \\      | $$$    \\$$$| $$  | $$|   $$ \\   | $$   
+ \\$$       \\$$$$$$$$ \\$$$$$$$$ \\$$   \\$$  \\$$$$$$  \\$$$$$$$$       \\$$      \\$$ \\$$   \\$$ \\$$$$$$    \\$$   `;
+    const missingTitle =
+        ` ________  ______  ________  __        ________        __       __  ______   ______    ______   ______  __    __   ______  
+|        \\|      \\|        \\|  \\      |        \\      |  \\     /  \\|      \\ /      \\  /      \\ |      \\|  \\  |  \\ /      \\ 
+ \\$$$$$$$$ \\$$$$$$ \\$$$$$$$$| $$      | $$$$$$$$      | $$\\   /  $$ \\$$$$$$|  $$$$$$\\|  $$$$$$\\ \\$$$$$$| $$\\ | $$|  $$$$$$\\
+   | $$     | $$     | $$   | $$      | $$__          | $$$\\ /  $$$  | $$  | $$___\\$$| $$___\\$$  | $$  | $$$\\| $$| $$ __\\$$
+   | $$     | $$     | $$   | $$      | $$  \\         | $$$$\\  $$$$  | $$   \\$$    \\  \\$$    \\   | $$  | $$$$\\ $$| $$|    \\
+   | $$     | $$     | $$   | $$      | $$$$$         | $$\\$$ $$ $$  | $$   _\\$$$$$$\\ _\\$$$$$$\\  | $$  | $$\\$$ $$| $$ \\$$$$
+   | $$    _| $$_    | $$   | $$_____ | $$_____       | $$ \\$$$| $$ _| $$_ |  \\__| $$|  \\__| $$ _| $$_ | $$ \\$$$$| $$__| $$
+   | $$   |   $$ \\   | $$   | $$     \\| $$     \\      | $$  \\$ | $$|   $$ \\ \\$$    $$ \\$$    $$|   $$ \\| $$  \\$$$ \\$$    $$
+    \\$$    \\$$$$$$    \\$$    \\$$$$$$$$ \\$$$$$$$$       \\$$      \\$$ \\$$$$$$  \\$$$$$$   \\$$$$$$  \\$$$$$$ \\$$   \\$$  \\$$$$$$ `
 
-async function init()
-{
-    displayTitle();
-    console.log('\t\t\t\tWELCOME TO THE TEAM BUILDER!');
-    console.log(`\n\t\tThe Team Builder will first ask you a series of questions to 
-                gather information about your team. Then it will build and 
-                present your team via your browser. Let's get started!`);
+    console.clear();
+    switch (val)
+    {
+        case 'main':
+            console.log('\n\n\n' + '='.repeat(117) + '\n' + mainTitle + '\n' + '='.repeat(117) + '\n');
+            break;
+        case 'wait':
+            console.log('\n\n\n' + '='.repeat(107) + '\n' + pleaseWaitTitle + '\n' + '='.repeat(107) + '\n');
+            break;
+        default:
+            console.log('\n\n\n' + '='.repeat(123) + '\n' + missingTitle + '\n' + '='.repeat(123) + '\n')
+    }
 
-    await keyPress()
 
-    // Wait for createTeam return
-    const team = await createTeam();
-
-    console.log(team)
 }
 
-async function createTeam()
+function waitTime()
 {
-    // This function is unecessary. Can get rid of it by moving manager handling over to the interrogator menu
-    // Wait for Interrogator to return
-    let manager = await interrogator.getTeamMember('Manager');
-    // If time permits - check for existing manager and team
+    let elipse = '.'
+    console.clear();
+    displayTitle('wait');
+    console.log('\t\t\tWhile I assemble your team' + elipse.repeat(counter));
+    counter++;
+    if (counter > 3) counter = 0;
 
-    displayTitle(); // push previous questions up to make a cleaner look
-
-    console.log(`\tOk, ${manager.name.split(' ')[0]} lets build your winning team!\n`);
-
-    // Wait for Interrogator to return
-    let team = await interrogator.loadMenu();
-
-    // Push manager object to the front of the array
-    team.unshift(manager);
-
-    return team;
-}
-
-function displayTitle()
-{
-    console.log('='.repeat(117));
-    console.log(title);
-    console.log('='.repeat(117));
-    console.log('');
-}
-
-function displayBuilding()
-{
-    console.log('='.repeat(117));
-    console.log()
 }
 
 // Wait for key press solution courtesy of 'snesin'
