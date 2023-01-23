@@ -16,23 +16,24 @@ let counter = 0;
 
 async function init()
 {
-    // displayTitle('main');
-    // console.log('\t\t\t\tWELCOME TO THE TEAM BUILDER!');
-    // console.log(`\n\t\tThe Team Builder will first ask you a series of questions to 
-    //             gather information about your team. Then it will build and 
-    //             present your team via your browser. Let's get started!`);
+    displayTitle('main');
+    console.log('\t\t\t\tWELCOME TO THE TEAM BUILDER!');
+    console.log(`\n\t\tI'll first have ask you a few questions about your team.
+                Then I'll build and present your team in your browser. 
+                So let's get to work!`);
 
-    // await keyPress()
+    await keyPress()
 
-    // // Load interrogator menu and wait for its return
-    // const team = await interrogator.loadMenu(displayTitle);
-    // // console.log(team);
+    // Load interrogator menu and wait for its return
+    const team = await interrogator.loadMenu(displayTitle);
+    // console.log(team);
 
     // Display Please Wait while building html file
-    // waitInterval = setInterval(waitTime, freq);
-    // setTimeout(() => clearInterval(waitInterval), delay);
+    waitInterval = setInterval(waitTime, freq);
+    setTimeout(() => clearInterval(waitInterval), delay);
 
-    team = [new Manager(12, 'Donovan Courtney', 'donovan.courtney@gmail.com', '555-555-5555'), new Engineer(2, 'Jimbo Bojim', 'jimbojim@gmail.com', 'jimbo')]
+    // Test Data
+    // team = [new Manager(12, 'Donovan Courtney', 'donovan.courtney@gmail.com', '555-555-5555'), new Engineer(2, 'Jimbo Bojim', 'jimbojim@gmail.com', 'jimbo')]
 
     createHTML(team);
 }
@@ -56,7 +57,7 @@ async function createHTML(team)
                 iconAlt = `person and a gear.`;
                 break;
             case 'Engineer':
-                extraInfo = `GitHub: <a href="https://github.com/${element.getGithub()}">${element.getGithub()}</a>`;
+                extraInfo = `GitHub: <a class=text-blue-900 href="https://github.com/${element.getGithub()} target=_blank rel="noreferrer noopener">${element.getGithub()}</a>`;
                 iconAlt = `person with hardhat on and surrounded by gears.`
                 break;
             case 'Intern':
@@ -80,7 +81,7 @@ async function createHTML(team)
                             <div class="py-8 px-6">
                                 <ul class="bg-white rounded-sm border border-gray-200 text-gray-900 w-full">
                                     <li class="px-3 py-2 border-b border-gray-200 w-full rounded-t-sm">ID: ${id}</li>
-                                    <li class="px-3 py-2 border-b border-gray-200 w-full">Email: <a href="mailto:${email}">${email}</a></li>
+                                    <li class="px-3 py-2 border-b border-gray-200 w-full">Email: <a class=text-blue-900 href="mailto:${email}">${email}</a></li>
                                     <li class="px-3 py-2 border-b border-gray-200 w-full">${extraInfo}</li>
                                 </ul>
                             </div>
