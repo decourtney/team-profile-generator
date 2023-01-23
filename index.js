@@ -63,7 +63,6 @@ async function createHTML(team)
                 break;
         }
 
-
         employeeCards +=
             `
                         <div class="block rounded-lg shadow-lg bg-gray-100 w-96 h-auto text-left mx-5 my-5">
@@ -82,8 +81,6 @@ async function createHTML(team)
                         </div>
             `;
     });
-
-
 
     const htmlTemplate = dedent(
         `<!DOCTYPE html>
@@ -193,8 +190,6 @@ function displayTitle(val)
         default:
             console.log('\n\n\n' + '='.repeat(123) + '\n' + missingTitle + '\n' + '='.repeat(123) + '\n')
     }
-
-
 }
 
 function waitTime()
@@ -205,7 +200,6 @@ function waitTime()
     console.log('\t\t\tWhile I assemble your team' + elipse.repeat(counter));
     counter++;
     if (counter > 3) counter = 0;
-
 }
 
 // Wait for key press solution courtesy of 'snesin'
