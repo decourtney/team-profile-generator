@@ -124,7 +124,6 @@ async function createHTML(team)
                 </div>
             </footer>
         </body>
-        <script src="../js/profile.js"></script>
 
         </html>
         `);
