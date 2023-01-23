@@ -51,8 +51,7 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 ## Testing
 
-
-  Testing is conducted using Jest and all test scripts are located in the **_tests_** folder.
+Testing is conducted using Jest and all test scripts are located in the **_tests_** folder.
 The test will verify that each class script properly outputs an instantiated Class object.
 To run the tests enter the command **npm test** while in the root directory of The Team Profile Generator.
 
