@@ -51,7 +51,7 @@ async function createHTML(team)
                 iconAlt = `person and a gear.`;
                 break;
             case 'Engineer':
-                extraInfo = `GitHub: <a class=text-blue-900 href="https://github.com/${element.getGithub()} target=_blank rel="noreferrer noopener">${element.getGithub()}</a>`;
+                extraInfo = `GitHub: <a class=text-blue-900 href="https://github.com/${element.getGithub()}" target=_blank rel="noreferrer noopener">${element.getGithub()}</a>`;
                 iconAlt = `person with hardhat on and surrounded by gears.`
                 break;
             case 'Intern':
