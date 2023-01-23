@@ -36,6 +36,11 @@ To start The Team Profile Generator you need to have access to a cmd prompt or t
 Navigate to the generators root directory and run the command **node index.js**.
 From here you will be prompted with a series of questions about you and your team.
 After all questions are answered the generator will consolidate the information and build and present an html page containing your team roster and their contact information.
+<br>
+  <div>
+      <img src="./videos/usage.gif" target="_blank" alt="" style="max-width: 768px; display: block;" />  
+  </div>
+<br>
 
 ## Contribution
 
@@ -54,6 +59,11 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 Testing is conducted using Jest and all test scripts are located in the **_tests_** folder.
 The test will verify that each class script properly outputs an instantiated Class object.
 To run the tests enter the command **npm test** while in the root directory of The Team Profile Generator.
+<br>
+  <div>
+      <img src="./videos/tests.gif" target="_blank" alt="" style="max-width: 768px; display: block;" />  
+  </div>
+<br>
 
 ## Questions
 
