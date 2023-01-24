@@ -12,10 +12,10 @@ let counter = 0;
 async function init()
 {
     displayTitle('main');
-    console.log('\t\t\t\tWELCOME TO THE TEAM BUILDER!');
-    console.log(`\n\t\tI'll first have ask you a few questions about your team.
+    console.log(chalk.yellow('\t\t\t\tWELCOME TO THE TEAM BUILDER!'));
+    console.log(chalk.whiteBright(`\n\t\tI'll first have ask you a few questions about your team.
                 Then I'll build and present your team in your browser. 
-                So let's get to work!`);
+                So let's get to work!`));
 
     await keyPress()
 
@@ -147,7 +147,7 @@ function writeToFile(fileName, data)
 function displayTitle(val)
 {
     const mainTitle =
-        ` ________  ________   ______   __       __        _______   __    __  ______  __        _______   ________  _______  
+        chalk.green.bold(` ________  ________   ______   __       __        _______   __    __  ______  __        _______   ________  _______  
 |        \\|        \\ /      \\ |  \\     /  \\      |       \\ |  \\  |  \\|      \\|  \\      |       \\ |        \\|       \\ 
  \\$$$$$$$$| $$$$$$$$|  $$$$$$\\| $$\\   /  $$      | $$$$$$$\\| $$  | $$ \\$$$$$$| $$      | $$$$$$$\\| $$$$$$$$| $$$$$$$\\
    | $$   | $$__    | $$__| $$| $$$\\ /  $$$      | $$__/ $$| $$  | $$  | $$  | $$      | $$  | $$| $$__    | $$__| $$
@@ -155,7 +155,7 @@ function displayTitle(val)
    | $$   | $$$$$   | $$$$$$$$| $$\\$$ $$ $$      | $$$$$$$\\| $$  | $$  | $$  | $$      | $$  | $$| $$$$$   | $$$$$$$\\
    | $$   | $$_____ | $$  | $$| $$ \\$$$| $$      | $$__/ $$| $$__/ $$ _| $$_ | $$_____ | $$__/ $$| $$_____ | $$  | $$
    | $$   | $$     \\| $$  | $$| $$  \\$ | $$      | $$    $$ \\$$    $$|   $$ \\| $$     \\| $$    $$| $$     \\| $$  | $$
-    \\$$    \\$$$$$$$$ \\$$   \\$$ \\$$      \\$$       \\$$$$$$$   \\$$$$$$  \\$$$$$$ \\$$$$$$$$ \\$$$$$$$  \\$$$$$$$$ \\$$   \\$$`;
+    \\$$    \\$$$$$$$$ \\$$   \\$$ \\$$      \\$$       \\$$$$$$$   \\$$$$$$  \\$$$$$$ \\$$$$$$$$ \\$$$$$$$  \\$$$$$$$$ \\$$   \\$$`);
     const pleaseWaitTitle =
         ` _______   __        ________   ______    ______   ________        __       __   ______   ______  ________ 
 |       \\ |  \\      |        \\ /      \\  /      \\ |        \\      |  \\  _  |  \\ /      \\ |      \\|        \\
@@ -181,13 +181,13 @@ function displayTitle(val)
     switch (val)
     {
         case 'main':
-            console.log('\n\n\n' + '='.repeat(117) + '\n' + mainTitle + '\n' + '='.repeat(117) + '\n');
+            console.log('\n\n\n' + chalk.whiteBright('=').repeat(117) + '\n' + mainTitle + '\n' + chalk.whiteBright('=').repeat(117) + '\n');
             break;
         case 'wait':
-            console.log('\n\n\n' + '='.repeat(107) + '\n' + pleaseWaitTitle + '\n' + '='.repeat(107) + '\n');
+            console.log('\n\n\n' + chalk.whiteBright('=').repeat(107) + '\n' + pleaseWaitTitle + '\n' + chalk.whiteBright('=').repeat(107) + '\n');
             break;
         default:
-            console.log('\n\n\n' + '='.repeat(123) + '\n' + missingTitle + '\n' + '='.repeat(123) + '\n')
+            console.log('\n\n\n' + chalk.whiteBright('=').repeat(123) + '\n' + missingTitle + '\n' + chalk.whiteBright('=').repeat(123) + '\n')
     }
 }
 
